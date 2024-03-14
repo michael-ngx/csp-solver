@@ -1,0 +1,41 @@
+    class Variable: 
+
+name, dom, curdom (boolean list), assignedValues
+
+- prune_value/unprune_value by changing boolean 
+- assign/unassign values
+
+
+
+    class Constraint:
+
+scope: ordered list of Variable objects
+sat_tuple: dict of satisfying tuple values (all)
+
+- get_n_unasgn: return number of unassigned vars in scope
+- get_unasgn_vars: return list of unassigned vars in scope
+
+
+
+
+    class CSP: (variables can add anytime, constraints must be added later)
+
+vars = []
+cons = []
+vars_to_cons = dict()       --> All constraints associated with the Variable objects
+
+- get_cons_with_var: list of constraints that include var in their scope
+
+
+
+    class BT:
+
+csp (CSP object)
+
+- def restoreValues(self,prunings):
+    '''Restore list of values to variable domains
+        each item in prunings is a pair (var, val)'''
+    for var, val in prunings:
+        var.unprune_value(val)
+
+- bt_search
